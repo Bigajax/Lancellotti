@@ -43,7 +43,7 @@ const jsonLd = {
   "@type": "TattooParlor",
   name: site.name,
   description: site.description,
-  image: `${site.url}/images/brand/logo.jpg`,
+  image: `${site.url}/images/brand/logo-l.png`,
   url: site.url,
   address: {
     "@type": "PostalAddress",

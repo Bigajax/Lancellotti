@@ -9,11 +9,11 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <Image
-              src="/images/brand/logo.jpg"
-              alt={`Brasão do ${site.shortName}`}
+              src="/images/brand/logo-l.png"
+              alt={`Logo do ${site.shortName}`}
               width={48}
               height={48}
-              className="h-12 w-12 rounded-lg object-contain"
+              className="h-12 w-12 object-contain"
             />
             <div>
               <p className="display text-lg uppercase">Lancellotti</p>
