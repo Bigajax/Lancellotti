@@ -33,15 +33,16 @@ export function Hero() {
       {/* Cena cinematográfica de borda a borda, com o header flutuando por cima */}
       <Reveal>
         <div className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
-            <div className="absolute inset-0">
-              {/* retrato no mobile, cena horizontal no desktop */}
+            {/* mobile: retrato só no topo, derretendo em tinta antes do texto;
+                desktop: cena horizontal de borda a borda */}
+            <div className="absolute inset-x-0 top-0 h-[54svh] md:inset-0 md:h-auto">
               <Image
                 src="/images/hero/william-scene-mobile.jpg"
                 alt={`${site.artist}, tatuador e piercer, diante do anel de luz do estúdio`}
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-[center_30%] md:hidden"
+                className="object-cover object-top md:hidden"
               />
               <Image
                 src="/images/hero/william-scene.jpg"
@@ -53,11 +54,11 @@ export function Hero() {
               />
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent md:from-ink/90 md:via-ink/25"
               />
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-r from-ink/60 to-transparent"
+                className="absolute inset-0 hidden bg-gradient-to-r from-ink/60 to-transparent md:block"
               />
             </div>
             <div aria-hidden className="grain absolute inset-0" />
