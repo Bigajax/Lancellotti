@@ -31,8 +31,8 @@ export const site = {
   instagramUrl: "https://www.instagram.com/lancellotti_tattoo/",
   googleRating: { value: "5,0", count: 9 },
 
-  /** EDITAR: URL final após o deploy (domínio da Vercel ou próprio). */
-  url: "https://lancellotti-eight.vercel.app",
+  /** URL de produção (trocar quando houver domínio próprio). */
+  url: "https://lancellotti-tattoo-clinic.vercel.app",
 
   whatsappDefaultMessage:
     "Olá! Vim pelo site da Lancellotti Tattoo Clinic e quero mais informações.",
