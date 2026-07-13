@@ -6,13 +6,8 @@ export const site = {
   description:
     "Projetos autorais de tatuagem e aplicação de piercing com atendimento personalizado em Maringá. Estúdio de William Lancellotti — realismo, blackwork, fine line, lettering e neotradicional.",
 
-  /**
-   * EDITAR: número de WhatsApp com DDI+DDD, somente dígitos.
-   * Placeholder — Rafael vai passar o número real.
-   * Provável número do estúdio (visto em flyer oficial do curso de tatuagem):
-   * (44) 99827-6324 → "5544998276324". CONFIRMAR antes de trocar.
-   */
-  whatsapp: "5544999999999",
+  /** WhatsApp do estúdio: (44) 99827-6324, com DDI+DDD, somente dígitos. */
+  whatsapp: "5544998276324",
 
   /**
    * EDITAR: vídeo do hero (William tatuando, macro, câmera lenta).
@@ -36,8 +31,8 @@ export const site = {
   instagramUrl: "https://www.instagram.com/lancellotti_tattoo/",
   googleRating: { value: "5,0", count: 9 },
 
-  /** EDITAR: URL final após o deploy (Vercel ou domínio próprio). */
-  url: "https://lancellotti-tattoo.vercel.app",
+  /** EDITAR: URL final após o deploy (domínio da Vercel ou próprio). */
+  url: "https://lancellotti-eight.vercel.app",
 
   whatsappDefaultMessage:
     "Olá! Vim pelo site da Lancellotti Tattoo Clinic e quero mais informações.",
