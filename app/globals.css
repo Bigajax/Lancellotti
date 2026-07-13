@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta — galeria clara: papel, tinta e um fio de vermelho */
+  --color-paper: #faf8f4;
+  --color-surface: #f1ede5;
+  --color-ink: #131210;
+  --color-blood: #b01e28;
+  --color-whats: #25d366;
+
+  /* Tipografia — grotesca pesada e larga + sans neutra */
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 48s linear infinite;
+  --animate-marquee-slow: marquee 72s linear infinite;
+  --animate-nameband: marquee 32s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-blood);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blood);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Eyebrow — rótulo curto, tinta clara, sem pompa */
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-blood);
+}
+
+/* Display — grotesca preta, larga, colada */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 118%;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Legenda de galeria */
+.museum-caption {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+}
+
+/* Fio divisor */
+.hairline {
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+/* Grão de filme — só sobre fotos */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+}
+
+/* ============================================================
+   LOADER — logo + "CARREGANDO…" que se desfaz em quadrados
+   escuros, de baixo para cima (pixel dissolve, receita Razeira)
+   ============================================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.loading {
+  overflow: hidden;
+}
+
+.loader__center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.35s ease;
+}
+.loader.leaving .loader__center {
+  opacity: 0;
+}
+
+.loader__logo {
+  /* PNG recortado: só a letra, sem o brilho do fundo original */
+  width: min(22vw, 104px);
+  height: auto;
+  display: block;
+}
+.loader__text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  animation: loader-pulse 1.6s ease-in-out infinite;
+}
+@keyframes loader-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Grade da saída: cada célula é um "pixel" que some sozinho. */
+.loader__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  overflow: hidden;
+}
+.loader.leaving {
+  background: transparent;
+}
+.loader__grid span {
+  background: var(--color-ink);
+  /* cobre as emendas subpixel entre as células */
+  box-shadow: 0 0 0 1px var(--color-ink);
+  opacity: 1;
+  transition: opacity 0.22s ease;
+}
+.loader.leaving .loader__grid span {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
